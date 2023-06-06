@@ -39,6 +39,10 @@
                     </a>
                 @endif
 
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                @endif
+
                 <x-button class="ml-4">
                     {{ __('Log in') }}
                 </x-button>
@@ -47,6 +51,9 @@
             <div>
                 <p>Mail : gael.tigongue@outlook.com</p>
                 <p>Password : FrJ4B5v_47EL4K7</p>
+                
+                <p>Mail : panda.noir@outlook.com</p>
+                <p>Password : azerty1234</p>
             </div>
         </form>
     </x-authentication-card>

@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-
 class UserController extends Controller
 {
-    public function userView(){
+    public function UserView(){
 
         //$allData = User::all();
         $data['allData'] = User::all();
@@ -22,13 +21,22 @@ class UserController extends Controller
     }
 
     public function UserStore(Request $request) {
-        $validateData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'familyname' => 'required',
             'email' =>'required|unique:users',
-            'password' =>'required'
-
+            'password' =>[
+                'required',
+                'string',
+                'confirmed',
+                'min:8',
+                'regex:/[A-Z]/','regex:/[a-z]/','regex:/[0-9]/','regex:/[_!@#$%^&*()<>?]/'],
+                [
+                    'password.regex'=>'The password must contain at least one uppercase letter, one lowercase letter, one number and one symbol().',
+                ]
         ]);
+
+
         $data = new User();
         $data->usertype = $request->usertype;
         $data->name = $request->name;
@@ -38,9 +46,12 @@ class UserController extends Controller
 
         $data->password = bcrypt($request->password);
         $data->save();
+        dd($data);
 
         return redirect()->route('user.view');
     }
+
+
 
     public function UserEdit($id) {
 
@@ -72,8 +83,6 @@ class UserController extends Controller
         $data->save();
 
         
-
-
         return redirect()->route('user.view');
 
     }
@@ -85,5 +94,7 @@ class UserController extends Controller
 
         return redirect()->route('user.view');
     }
+
+    
 
 }

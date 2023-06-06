@@ -43,7 +43,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('user.view') }}"><i class="ti-more"></i>Liste utilisateurs </a></li>
-            <li><a href="#"><i class="ti-more"></i>Ajout utilisateur</a></li>
+            <li><a href="{{ route('users.add') }}"><i class="ti-more"></i>Ajout utilisateur</a></li>
           </ul>
         </li> 
 		  
@@ -57,6 +57,20 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('profile.view') }}"><i class="ti-more"></i>Mon Profil</a></li>
             <li><a href="{{ route('password.view') }}"><i class="ti-more"></i>Modifier Mot de Passe</a></li>
+          </ul>
+        </li>
+
+
+        <li class="treeview {{ ($prefix == '/setups')?'active':'' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Gestion Equipes </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('player.team.view') }}"><i class="ti-more"></i>Equipes</a></li>
+            
           </ul>
         </li>
 		

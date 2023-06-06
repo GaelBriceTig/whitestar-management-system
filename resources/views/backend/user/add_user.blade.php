@@ -39,6 +39,7 @@
                               <option value="Admin">Administrateur</option>
                               <option value="Manager">Manager</option>
                               <option value="Coach">Coach</option>
+                              <option value="Joueur">Joueur</option>
                             </select>
                             <div class="help-block"></div>
                           </div>
@@ -75,10 +76,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <h5>Mot de Passe : <span class="text-danger">*</span></h5>
+                      <h5>Mot de Passe : <span class="text-danger">
+                      </span></h5>
                         <div class="controls">
-                          <input type="password" name="password" class="form-control" required="Ce Champ est Important"> <div class="help-block"></div>
+                          <input type="password" id="password" name="password" class="form-control" required="Ce Champ est Important"> <div class="help-block"></div>
                         </div>
+                        
                     </div> 
 
                     <div class="text-xs-right">
@@ -97,19 +100,38 @@
         <!-- /.box -->
    
       </section>
-
-      
-
-
-
-
-
-
-      
-    
     </div>
 </div>
 
+<script>
+  
+  /*$(document).ready(function() {
+    function generatePassword(){
+      let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789__!@#$%^&*()<>?";
+      let password = "";
+      let length = 12;
 
+      for(let i =0, i < length; i++){
+        password += charset.charAt(Math.floor(Math.random()* charset.length));
+    }
+
+    return password;
+  }
+
+  // sets password input fields
+  $('.generate-password').on('click',function(){
+
+    let password = generatePassword();
+
+    $('#password').val(password);
+  });
+
+  
+
+
+});*/
+
+
+</script>
 
 @endsection

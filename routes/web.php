@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\PlayerTeamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('admin.index');
     })->name('dashboard');
+});
+
+Route::get('/registrations', function () {
+    return view('auth.register');
 });
 
 Route::get('/admin/logout', [
@@ -88,6 +93,53 @@ Route::prefix('profiles')->group(function () {
     Route::get('/password/view', [
         ProfileController::class, 'PasswordView'
         ])->name('password.view');
+    
+    
+
+});
+
+
+
+// User Profiles and password
+
+Route::prefix('setups')->group(function () {
+
+    //Players Team Routes
+    Route::get('player/team/view',
+        [PlayerTeamController::class, 'ViewPlayer'])
+        ->name('player.team.view');    
+    
+    Route::get('player/team/add',
+        [PlayerTeamController::class, 'PlayerTeamAdd'])
+        ->name('player.team.add');    
+   
+    Route::post('player/team/store',
+        [PlayerTeamController::class, 'PlayerTeamStore'])
+        ->name('store.player.team');    
+   
+    Route::get('player/team/edit/{id}',
+        [PlayerTeamController::class, 'PlayerTeamEdit'])
+        ->name('player.team.edit');    
+    
+    Route::post('player/team/update/{id}',
+        [PlayerTeamController::class, 'PlayerTeamUpdate'])
+        ->name('player.team.update');    
+    
+    Route::get('player/team/delete/{id}',
+        [PlayerTeamController::class, 'PlayerTeamDelete'])
+        ->name('player.team.delete');    
 
 
 });
+
+
+// Coach Access and priorities 
+
+
+
+
+
+
+
+
+// Player access and priorities 

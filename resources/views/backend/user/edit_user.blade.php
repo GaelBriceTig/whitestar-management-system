@@ -39,6 +39,7 @@
                                         <option value="Admin" {{ ($editData->usertype == "Admin" ? "selected": "") }}>Administrateur</option>
                                         <option value="Manager" {{ ($editData->usertype == "Manager" ? "selected": "")}}>Manager</option>
                                         <option value="Coach" {{ ($editData->usertype == "Coach" ? "selected": "")}}>Coach</option>
+                                        <option value="Coach" {{ ($editData->usertype == "Joueur" ? "selected": "")}}>Joueur</option>
                                         </select>
                                         <div class="help-block"></div>
                                     </div>
